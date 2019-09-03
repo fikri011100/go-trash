@@ -3,25 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	//var x int
-	//fmt.Println(x)
+	// fix length array
+	//var arr [3]int
+	//arr[2] = 2
+	//fmt.Println(arr)
 
-	var x int = 5
-	var y int = 3
-	var sum int = x + y
-	var name string = "Allam"
-	var isLoading bool = false
-	var floatNumber float64 = 3.5
+	// short hand fix array
+	//arr := [3]int {1, 2, 3}
+	//fmt.Println(arr)
 
-	z := 10
-	address := "south tangerang"
+	// short hand dynamic array
+	arr := []int {1, 2, 3}
+	arr = append(arr, 4)
+	fmt.Println(arr)
 
 
-	fmt.Println(sum)
-	fmt.Println(name)
-	fmt.Println(isLoading)
-	fmt.Println(floatNumber)
-
-	fmt.Println(z)
-	fmt.Println(address)
 }
