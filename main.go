@@ -1,31 +1,32 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-	"math"
-)
+import "fmt"
 
-func main() {
-	//result := sum(3, 2)
-	//fmt.Println(result)
-
-	sqrtResult, err := sqrt(-2)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(sqrtResult)
-	}
+type Person struct {
+	Name string
+	Age  int
 }
 
-//func sum(x int, y int) int {
-//	return x + y
-//}
+func main() {
+	//p := Person{Name: "Ega", Age: 28}
+	//
+	//fmt.Println(p)
+	//fmt.Println(p.Name)
 
-func sqrt(num float64) (float64, error) {
-	if num < 0 {
-		return 0, errors.New("should not negative")
+	// array of struct
+	p := []Person{
+		{Name: "Ega", Age: 28},
+		{Name: "Yuni", Age: 21},
 	}
+	//
+	//fmt.Println(p)
+	//fmt.Println(p[1])
+	//fmt.Println(p[1].Age)
 
-	return math.Sqrt(num), nil
+	//traverse over array of struct
+	for _, elem := range p {
+		fmt.Println("name", elem.Name)
+		fmt.Println("age", elem.Age)
+		fmt.Println("")
+	}
 }
