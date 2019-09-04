@@ -3,12 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	x := 4
-	if x < 3 {
-		fmt.Println("Ayeee")
-	} else if x == 4 {
-		fmt.Println("Yesss")
-	} else {
-		fmt.Println("Ooops")
-	}
+	stock := make(map[string]int)
+
+	stock["apple"] = 10
+	stock["tomato"] = 12
+	stock["cherry"] = 0
+	stock["blueberry"] = 15
+
+	delete(stock, "blueberry")
+
+	fmt.Println(stock)
+	fmt.Println(stock["tomato"])
 }
