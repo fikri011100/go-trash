@@ -1,16 +1,22 @@
-// & = memory, * = value
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	i := 10
-	inc(&i)
+	//timer("push up")
+	go timer("push up")
+	go timer("pull up")
+	//go timer("pull up")
 
-	//fmt.Println(&i)
-	fmt.Println(i)
+	//fmt.Scanln()
 }
 
-func inc(x *int) {
-	*x++
+func timer(todo string) {
+	for i := 1; i < 5; i++ {
+		fmt.Println(todo, i)
+		time.Sleep(time.Second)
+	}
 }
