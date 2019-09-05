@@ -24,7 +24,17 @@ func AllUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Create User Called")
+	//fmt.Fprintf(w, "Create User Called")
+
+	db := InitDb()
+	defer db.Close()
+
+	var user User
+	json.NewDecoder(r.Body).Decode(&user)
+	db.Create(&user)
+
+	json.NewEncoder(w).Encode(&user)
+	//json.NewEncoder(w).Encode("Success create user")
 }
 
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
