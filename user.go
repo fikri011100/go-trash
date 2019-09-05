@@ -1,12 +1,26 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/jinzhu/gorm"
 	"net/http"
 )
 
-func AllUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "All Users Called")
+type User struct {
+	gorm.Model
+	Name  string
+	Email string
+}
+
+func AllUsers(w http.ResponseWriter, r *http.Request) {
+	db := InitDb()
+	defer db.Close()
+
+	var users []User
+	db.Find(&users)
+
+	json.NewEncoder(w).Encode(users)
 }
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
