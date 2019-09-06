@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/zufaralam02/first-go/db"
+	"github.com/zufaralam02/first-go/handler"
 	"log"
 	"net/http"
 )
@@ -17,10 +19,10 @@ func handleRequests() {
 	r.HandleFunc("/", helloWorld).Methods("GET")
 
 	//users endpoint
-	r.HandleFunc("/users", AllUsers).Methods("GET")
-	r.HandleFunc("/user", CreateUser).Methods("POST")
-	r.HandleFunc("/user/{id}", UpdateUser).Methods("PATCH")
-	r.HandleFunc("/user/{id}", DeleteUser).Methods("DELETE")
+	r.HandleFunc("/users", handler.AllUsers).Methods("GET")
+	r.HandleFunc("/user", handler.CreateUser).Methods("POST")
+	r.HandleFunc("/user/{id}", handler.UpdateUser).Methods("PATCH")
+	r.HandleFunc("/user/{id}", handler.DeleteUser).Methods("DELETE")
 
 	log.Fatal(http.ListenAndServe(":8081", r))
 }
@@ -29,7 +31,7 @@ func main() {
 	fmt.Println("Go run on port 8081")
 
 	//db operation
-	Migrate()
+	db.Migrate()
 
 	//run the func
 	handleRequests()
