@@ -15,7 +15,14 @@ func AllUsers(w http.ResponseWriter, r *http.Request) {
 	var users []model.User
 	db.Find(&users)
 
-	json.NewEncoder(w).Encode(users)
+	//json.NewEncoder(w).Encode(users)
+
+	//users := []model.User{
+	//	{Name: "Allam", Email: "zufaralam02@gmail.com"},
+	//	{Name: "Zufar", Email: "allam.it@langitpayment.com"},
+	//}
+
+	responseJson(w, http.StatusOK, users)
 }
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
@@ -28,8 +35,9 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&user)
 	db.Create(&user)
 
-	json.NewEncoder(w).Encode(&user)
+	//json.NewEncoder(w).Encode(&user)
 	//json.NewEncoder(w).Encode("Success create user")
+	responseJson(w, http.StatusOK, "success create")
 }
 
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
