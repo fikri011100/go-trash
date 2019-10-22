@@ -1,0 +1,2 @@
+# go-trash
+#hacktoberfest fikri
